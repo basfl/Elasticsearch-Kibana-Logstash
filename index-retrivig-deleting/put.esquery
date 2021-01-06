@@ -1,0 +1,6 @@
+Put /vehicles2/_create/123
+{
+ "make":"honda",
+ "milage":8700,
+ "color":"red"
+}

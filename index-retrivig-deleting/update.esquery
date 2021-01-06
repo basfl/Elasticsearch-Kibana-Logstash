@@ -1,0 +1,6 @@
+POST /vehicles2/_update/123
+{
+  "doc": {
+    "color": "black"
+  }
+}

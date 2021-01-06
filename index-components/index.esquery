@@ -1,0 +1,53 @@
+Put /business/_doc/110 
+{
+    "address": "123 main street",
+    "floor": 2,
+    "office": 1,
+    "loc": {
+        "lat": 12.3,
+        "lon": 24.3
+    }
+
+}
+
+Put /business/_doc/120
+{
+    "address": "123 main street",
+    "floor": 2,
+    "office": 1,
+    "price":45000,
+    "loc": {
+        "lat": 12.3,
+        "lon": 24.3
+    }
+
+}
+
+PUT /employee/_doc/12
+{
+    "name": "john doe",
+    "title": "employee2",
+    "salary": 60000,
+    "hireDate": "oc 10th, 20112"
+
+
+}
+
+PUT /employee/_doc/14
+{
+    "name": "jack doe",
+    "title": "employee2",
+    "salary": 80000,
+    "hireDate": "Nov 10th, 2016"
+
+}
+
+
+Put /contracts/_doc/7789
+
+{
+    "name": "john doe",    
+    "date_signed": "April 10th, 2012",
+    "employee_involved":[12,14]
+
+}

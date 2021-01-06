@@ -1,0 +1,16 @@
+
+GET /business
+
+GET /business/_search
+
+
+GET /business/_search
+{
+  "query": {
+    "term": {
+      "address": {
+        "value": "main"
+      }
+    }
+  }
+}
