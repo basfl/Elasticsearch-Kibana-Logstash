@@ -1,0 +1,19 @@
+POST _analyze
+{
+    "analyzer": "whitespace",
+    "text": "The quick brown fox."
+}
+
+
+POST _analyze
+{
+    "analyzer": "standard",
+    "text": "The quick brown fox."
+}
+
+
+POST _analyze
+{
+    "analyzer": "simple",
+    "text": "The quick brown fox"
+}

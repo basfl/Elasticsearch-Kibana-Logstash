@@ -1,0 +1,21 @@
+PUT customers/_mapping/
+{
+  "dynamic":"false"
+}
+
+PUT customers/_mapping
+{
+  "dynamic":"strict"
+}
+
+PUT customers/_doc/124
+{
+  "name":"b s",
+  "address":"main street",
+  "gender":"male",
+  "age":23,
+  "total_spent":2000,
+  "is_new":"false",
+  "retired":"true"
+   
+}
