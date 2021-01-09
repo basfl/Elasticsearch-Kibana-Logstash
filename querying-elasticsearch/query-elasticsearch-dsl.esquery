@@ -1,0 +1,41 @@
+GET /courses/_search
+{
+    "query": {
+        "match_all": {}
+    }
+}
+
+GET /courses/_search
+{
+    "query": {
+        "match": {
+            "name":"computer"
+        }
+    }
+}
+
+PUT /courses/_doc/5
+{
+    "name": "Theatre 410",
+    "room": "T18",
+    "professor": {
+        "name": "Sebastian Hern",
+        "department": "art",
+        "facutly_type": "part-time"
+        },
+    "students_enrolled": 47,
+    "course_publish_date": "2013-01-27",
+    "course_description": "Tht 410 is an advanced elective course disecting the various plays written by shakespere during the 16th century"
+}
+
+GET /courses/_search
+{
+    "query": {
+        "bool": {
+            "must":[
+         {"match":{"name":"computer"}},
+         {"match":{"room":"c8"}}
+         ]
+        } 
+    }
+}
