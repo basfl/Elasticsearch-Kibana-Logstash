@@ -39,3 +39,64 @@ GET /courses/_search
         } 
     }
 }
+
+GET /courses/_search
+{
+    "query": {
+        "bool": {
+            "must":[
+         {"match":{"name":"accounting"}},
+         {"match":{"room":"e3"}}
+         ],
+         "must_not": [
+           {"match": {
+             "professor.name": "Thomas Baszo"
+           }}
+         ]
+        } 
+    }
+}
+
+
+GET /courses/_search
+{
+    "query": {
+        "bool": {
+            "must":[
+         {"match":{"name":"accounting"}},
+         {"match":{"room":"e3"}}
+         ],
+         "must_not": [
+           {"match": {
+             "professor.name": "Thomas Baszo"
+           }}
+         ],
+         "should": [
+           {"match":{"name":"computer"}}
+         ]
+        }
+    }
+}
+
+
+GET /courses/_search
+{
+    "query": {
+        "bool": {
+            "must":[
+         {"match":{"name":"accounting"}},
+         {"match":{"room":"e3"}}
+         ],
+         "must_not": [
+           {"match": {
+             "professor.name": "Thomas Baszo"
+           }}
+         ],
+         "should": [
+           {"match":{"name":"computer"}}
+         ],
+         "minimum_should_match": 1
+        }
+    }
+}
+
