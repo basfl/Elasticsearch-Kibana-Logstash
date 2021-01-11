@@ -100,3 +100,74 @@ GET /courses/_search
     }
 }
 
+
+GET /courses/_search
+{
+  "query": {
+    "multi_match": {
+      "query": "accounting",
+      "fields": ["name","professor.department"]
+    }
+  }
+}
+
+
+GET /courses/_search
+{
+  "query": {
+    "match_phrase": {
+      "course_description": "the subject of business incurred costs"
+    }
+  }
+}
+
+
+GET /courses/_search
+{
+  "query": {
+    "match_phrase_prefix": {
+      "course_description": "the subject of business incurred cos"
+    }
+  }
+}
+
+
+GET /courses/_search
+{
+  "query": {
+    "range": {
+      "students_enrolled": {
+        "gte": 10,
+        "lte": 20
+      }
+    }
+  }
+}
+
+
+GET /courses/_search
+{
+"query": {
+  "bool": {
+    "must": [
+      {"match": {
+        "name": "accounting"
+      }}
+    ],
+    "must_not": [
+      {"match":{
+        "room":"e7"
+      }}
+    ],
+    "should": [
+      {"range": {
+        "students_enrolled": {
+          "gte": 10,
+          "lte": 20
+        }
+      }}
+    ],
+     "minimum_should_match": 1
+  }
+}
+}
