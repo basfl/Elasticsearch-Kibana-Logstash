@@ -1,0 +1,102 @@
+
+GET /courses/_search
+{
+  "query": {
+    "bool": {
+      "filter": {
+        "match":{
+          "name":"accounting"
+        }
+      }
+    }
+  }
+}
+
+
+GET /courses/_search
+{
+	"query": {
+		"bool": {
+			"filter": {
+				"bool": {
+					"must": [{
+							"match": {
+								"professor.name": "bill"
+							}
+						},
+						{
+							"match": {
+								"name": "accounting"
+							}
+						}
+					]
+				}
+			}
+		}
+	}
+}
+
+
+GET /courses/_search
+{
+	"query": {
+		"bool": {
+			"filter": {
+				"bool": {
+					"must": [{
+							"match": {
+								"professor.name": "bill"
+							}
+						},
+						{
+							"match": {
+								"name": "accounting"
+							}
+						}
+					]
+				}
+			},
+			"must": [
+			  {
+			    "match": {
+			      "room": "E3"
+			    }}
+			]
+		}
+	}
+}
+
+
+# only value inside match->room has max-score
+
+GET /courses/_search
+{
+	"query": {
+		"bool": {
+			"filter": {
+				"bool": {
+					"must": [{
+							"range":{
+							  "students_enrolled":{
+							    "gte":12
+							  }
+							}
+						},
+						{
+							"match": {
+								"name": "accounting"
+							}
+						}
+					]
+				}
+			},
+			"should": [
+			  {
+			    "match": {
+			      "room": "E3"
+			    }}
+			]
+		}
+	}
+}
+
