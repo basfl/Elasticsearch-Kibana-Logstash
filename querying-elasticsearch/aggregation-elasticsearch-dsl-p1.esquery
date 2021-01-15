@@ -1,0 +1,141 @@
+GET /vehicles/cars/_search
+
+{
+    "size":20,
+    "query":{
+        "match_all": {}
+  },
+  "sort": {
+      "price": {"order": "desc"}
+  }
+  
+}
+
+
+GET /vehicles/cars/_count
+
+{
+  
+    "query":{
+        "match": {"make":"dodge"}
+  }
+  
+}
+
+
+GET /vehicles/cars/_search
+{
+    "aggregations": {
+        "popular_cars":{
+            "terms": {
+                "field": "make.keyword"
+            }
+        }
+    }
+}
+
+
+GET /vehicles/cars/_search
+{
+    "aggregations": {
+        "popular_cars":{
+            "terms": {
+                "field": "make.keyword"
+            },
+            "aggregations": {
+                "avrage_price":{
+                    "avg": {
+                        "field": "price"
+                            }
+                                }
+            }
+          
+        }
+      
+        
+    }
+}
+
+
+
+GET /vehicles/cars/_search
+{
+    "aggregations": {
+        "popular_cars":{
+            "terms": {
+                "field": "make.keyword"
+            },
+            "aggregations": {
+                "avrage_price":{
+                    "avg": {
+                        "field": "price"
+                            }
+                                },
+                 "max_price":{
+                    "max":{
+                        "field":"price"
+                    }
+                }
+
+            }
+        }
+      
+        
+    }
+}
+
+
+
+GET /vehicles/cars/_search
+{
+"query":{
+    "match":{
+        "color":"red"
+        }
+    },
+    "aggregations": {
+        "popular_cars":{
+            "terms": {
+                "field": "make.keyword"
+            },
+            "aggregations": {
+                "avrage_price":{
+                    "avg": {
+                        "field": "price"
+                            }
+                                },
+                 "max_price":{
+                    "max":{
+                        "field":"price"
+                    }
+                }
+            }
+        }       
+    }
+}
+
+
+
+
+GET /vehicles/cars/_search
+{
+"query":{
+    "match":{
+        "color":"red"
+        }
+    },
+    "aggregations": {
+        "popular_cars":{
+            "terms": {
+                "field": "make.keyword"
+            },
+            "aggregations": {
+                "stat_on_price":{
+                    "stats": {
+                        "field": "price"
+                            }
+                                }        
+                            }
+                        }       
+                      }
+}

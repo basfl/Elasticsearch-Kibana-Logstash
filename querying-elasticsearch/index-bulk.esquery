@@ -36,15 +36,3 @@ POST /vehicles/cars/_bulk
 
 
 
-GET /vehicles/cars/_search
-
-{
-    "size":20,
-    "query":{
-        "match_all": {}
-  },
-  "sort": {
-      "price": {"order": "desc"}
-  }
-  
-}

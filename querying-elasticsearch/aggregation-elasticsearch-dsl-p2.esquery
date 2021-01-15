@@ -1,0 +1,152 @@
+
+GET /vehicles/cars/_search
+{
+
+	"aggregations": {
+		"popular_cars": {
+			"terms": {
+				"field": "make.keyword"
+			},
+			"aggregations": {
+
+				"sold_date_ranges": {
+					"range": {
+						"field": "sold",
+						"ranges": [{
+								"from": "2016-01-01",
+								"to": "2016-05-18"
+							},
+							{
+								"from": "2016-05-18",
+								"to": "2017-05-08"
+							}
+						]
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
+GET /vehicles/cars/_search
+{
+
+	"aggregations": {
+		"popular_cars": {
+			"terms": {
+				"field": "make.keyword"
+			},
+			"aggregations": {
+
+				"sold_date_ranges": {
+					"range": {
+						"field": "sold",
+						"ranges": [{
+								"from": "2016-01-01",
+								"to": "2016-05-18"
+							},
+							{
+								"from": "2016-05-18",
+								"to": "2017-05-08"
+							}
+						]
+					},
+					"aggregations": {
+						"avrage_price": {
+							"avg": {
+								"field": "price"
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+
+GET /vehicles/cars/_search
+{
+  "aggs": {
+    "car_condition": {
+      "terms": {
+        "field": "condition.keyword"
+      },
+      "aggs": {
+        "avg_price": {
+          "avg": {
+            "field": "price"
+          }
+        }
+      }
+    }
+    
+  }
+}
+
+
+
+GET /vehicles/cars/_search
+{
+	"aggs": {
+		"car_condition": {
+			"terms": {
+				"field": "condition.keyword"
+			},
+			"aggs": {
+				"avg_price": {
+					"avg": {
+						"field": "price"
+					}
+				},
+				"make": {
+					"terms": {
+						"field": "make.keyword"
+					}
+				}
+			}
+
+		}
+
+	}
+}
+
+
+GET /vehicles/cars/_search
+{
+	"aggs": {
+		"car_condition": {
+			"terms": {
+				"field": "condition.keyword"
+			},
+			"aggs": {
+				"avg_price": {
+					"avg": {
+						"field": "price"
+					}
+				},
+				"make": {
+					"terms": {
+						"field": "make.keyword"
+					},
+					"aggs": {
+						"min_price": {
+							"min": {
+								"field": "price"
+							}
+						},
+						"max_price": {
+							"max": {
+								"field": "price"
+							}
+						}
+					}
+				}
+			}
+
+		}
+
+	}
+}
